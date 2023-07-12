@@ -1,0 +1,14 @@
+# 쿠버네티스에서는 도커의 ENTRYPOINT 대신 command를, CMD 대신 args 용어를 사용해 컨테이너 실행시 명령어를 정의할 수 있다. 
+# CMD 명령어를 사용하는 가장 좋은 방법은 사용자가 command line에 인자를 입력하지 않을 때 실행할 기본 프로그램을 지정하는 것이다.
+# ENTRYPOINT 명령어는 컨테이너가 시작될 때 필수적으로 특정 명령을 실행해야 하는 경우에 적합하다.
+
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: sample-entrypoint
+spec:
+  containers:
+    - name: nginx-container-112
+      image: nginx:1.16
+      command: ["/bin/sleep"]
+      args: ["3600"]

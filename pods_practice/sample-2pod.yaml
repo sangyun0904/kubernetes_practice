@@ -1,0 +1,17 @@
+# nginx와 redis라는 두개의 컨태이너를 가진 파드 예제.
+# 레디스는 6379/TCP 포트를 바인드한다. 
+# nginx나 redis와 같은 메인 컨테이너를 하나의 파드 안에 같이 구성하는 것은 추천하지 않는다.
+# 파드 생성 : kubectl apply -f sample-2pod.yaml
+# 파드 조회 : kubectl get pods
+
+
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: sample-2pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:1.17
+    - name: redis-container 
+      image: redis:3.2
